@@ -1,3 +1,12 @@
+Práctica de Laboratorio #9. Creacion De Una Gema
+================
+
+## Componentes Del Grupo:
+
+- RUSHIL LAKHANI LAKHANI
+- WALDO NAZCO TORRES
+
+
 # GemaMatriz
 
 TODO: Write a gem description
@@ -27,3 +36,10 @@ TODO: Write usage instructions here
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+---
+
+Universidad de La Laguna  
+Escuela Técnica Superior de Ingeniería Informática  
+Lenguajes y Paradigmas de la Programación 2013-14
+
