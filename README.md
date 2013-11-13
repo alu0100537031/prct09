@@ -9,7 +9,7 @@ Práctica de Laboratorio #9. Creacion De Una Gema
 
 ## GemaMatriz
 
-TODO: Write a gem description
+Construcción de una gema ruby para la creación de matrices dispersas y densas,que heredan de la clase base Matriz 
 
 ## Installation
 
