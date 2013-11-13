@@ -7,7 +7,7 @@ Práctica de Laboratorio #9. Creacion De Una Gema
 - WALDO NAZCO TORRES
 
 
-# GemaMatriz
+## GemaMatriz
 
 TODO: Write a gem description
 
