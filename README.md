@@ -19,13 +19,13 @@ y creamos dos clases hijas que van a ser: clase Matriz Dispersa y clase Matriz D
 
 class  Matriz
 
-metodos
+   metodos
 
 end
 
 class MatrizDensa < Matriz
 
-metodos
+  metodos
 
 end
 
