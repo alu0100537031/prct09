@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Rushil Lakhani Lakhani & Waldo Nazco Torres"]
   spec.email         = ["alu0100537031@ull.edu.es"]
   spec.description   = %q{Construcción de una gema ruby para la creación de matrices dispersas y densas}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.summary       = %q{Practica 9 }
   spec.homepage      = "https://github.com/alu0100537031/prct09"
   spec.license       = "MIT"
 
