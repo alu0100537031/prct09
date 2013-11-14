@@ -11,6 +11,25 @@ Práctica de Laboratorio #9. Creacion De Una Gema
 
 Construcción de una gema ruby para la creación de matrices dispersas y densas,que heredan de la clase base Matriz 
 
+##Descripción de la práctica.
+
+La práctica consiste en crear una clase para representar matrices densas y dispersas que heredan de la clase Matriz.
+Para ello partimos de la clase base Matriz ya implementada de la práctica anterior con las operaciones basicas correspondientes (+-*/)
+y creamos dos clases hijas que van a ser: clase Matriz Dispersa y clase Matriz Densa cuya madre va a ser la clase base Matriz.
+
+class  Matriz
+......
+end
+
+class MatrizDensa < Matriz
+....
+end
+
+class MatrizDispersa < Matriz
+...
+end
+
+En dichas clases hijas se redefiniran los metodos para trabajar con el tipo de matrices indicado.
 ## Installation
 
 Add this line to your application's Gemfile:
