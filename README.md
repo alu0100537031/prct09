@@ -18,15 +18,15 @@ Para ello partimos de la clase base Matriz ya implementada de la práctica anter
 y creamos dos clases hijas que van a ser: clase Matriz Dispersa y clase Matriz Densa cuya madre va a ser la clase base Matriz.
 
 class  Matriz
-......
+metodos
 end
 
 class MatrizDensa < Matriz
-....
+metodos
 end
 
 class MatrizDispersa < Matriz
-...
+metodos
 end
 
 En dichas clases hijas se redefiniran los metodos para trabajar con el tipo de matrices indicado.
