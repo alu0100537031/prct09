@@ -2,18 +2,26 @@
 
 class Matriz
 
-  attr_reader :nfil, :ncol, :mat # metodos de acceso (getter)
+  attr_reader :nfil, :ncol # metodos de acceso (getter)
   
   # metodo que inicializa la matriz 
   
-  def initialize(nfil,ncol,mat)  
+  def initialize(nfil,ncol)  
     @nfil = nfil # inicializo numero de filas
     @ncol = ncol # inicializo numero de columnas 
-    @mat = Array.new(mat) #inicializo la matriz pasando como parametro un objeto de tipo matriz 
   end
 
-  # metodo que muestra la matriz como una cadena
+
+
+
+class MatrizDensa < Matriz
   
+  attr_reader :mat # metodos de acceso (getter)
+  def initialize(nfil,ncol,mat) 
+     super(nfil, ncol)
+     @mat = Array.new(mat) #inicializo la matriz pasando como parametro un objeto de tipo matriz 
+  end
+
   def to_s
      cad = " "
     for i in 0...nfil
@@ -68,11 +76,7 @@ class Matriz
     return Matriz.new(self.nfil,other.ncol,m)  
   end
    
-end
-
-
-class MatrizDensa < Matriz
-#  metodos redifinidos de la clase base Matriz  
+end 
 end
 
 class MatrizDispersa < Matriz
