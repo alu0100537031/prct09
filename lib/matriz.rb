@@ -19,11 +19,15 @@ end
 class MatrizDensa < Matriz
   
   attr_reader :mat # metodos de acceso (getter)
+  
   def initialize(nfil,ncol,mat) 
      super(nfil, ncol)
      @mat = Array.new(mat) #inicializo la matriz pasando como parametro un objeto de tipo matriz 
   end
 
+  def [](i)
+    return mat[i]
+  end
    
   def [](i,j)
       return mat[i][j]
@@ -86,9 +90,8 @@ class MatrizDensa < Matriz
 end 
 
 
-#class MatrizDispersa < Matriz
-#  metodos redifinidos de la clase base Matriz   
-#end
+class MatrizDispersa < Matriz
+end
 
 
 
