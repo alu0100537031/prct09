@@ -1,6 +1,8 @@
 require "./lib/gcd.rb"
 class Fraccion
   
+   include Comparable # Se incluye el modulo de nombre "comparable" utilizado para el operador <=>.
+  
   attr_reader :num, :denom # metodos de acceso (getter)
   
   def initialize(num,denom)
@@ -63,6 +65,13 @@ class Fraccion
    def /(other)
 	Fraccion.new(@num*other.denom,@denom*other.num)
    end
+   
+   # método que contempla el uso del modulo comparable <, >, <= y >=
+  
+  def <=>(other)
+     return nil unless other.instance_of? Fraccion
+     self.to_f <=> other.to_f
+  end
    
 end
    
