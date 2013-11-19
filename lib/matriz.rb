@@ -90,7 +90,12 @@ end
    
 #end 
 m1 = MatrizDensa.new(2,2,[[1,2],[3,4]])
+m2 = MatrizDensa.new(2,2,[[7,10],[15,22]])
 puts m1.to_s
+puts m2.to_s
+puts m2+m1
+puts m2-m1
+puts m2*m1
 
   
 
