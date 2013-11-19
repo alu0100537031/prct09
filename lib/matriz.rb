@@ -24,6 +24,11 @@ class MatrizDensa < Matriz
      @mat = Array.new(mat) #inicializo la matriz pasando como parametro un objeto de tipo matriz 
   end
 
+   
+  def [](i,j)
+      return mat[i][j]
+   end
+   
   def to_s
      cad = " "
     for i in 0...nfil
