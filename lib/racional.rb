@@ -70,9 +70,10 @@ class Fraccion
   
   def <=>(other)
      return nil unless other.instance_of? Fraccion
-     self.to_f <=> other.to_f
+     # self.to_f <=> other.to_f
+     @num.to_f/@denom <=> other.num.to_f/other.denom
   end
-   
+  
 end
    
 
