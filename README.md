@@ -13,14 +13,16 @@ Construcción de una gema ruby para la creación de matrices dispersas y densas,
 
 ##Descripción de la práctica.
 
-La práctica consiste en crear una clase para representar matrices densas y dispersas que heredan de la clase Matriz.
-Para ello partimos de la clase base Matriz ya implementada de la práctica anterior con las operaciones basicas correspondientes (+-*/)
-y creamos dos clases hijas que van a ser: clase Matriz Dispersa y clase Matriz Densa cuya madre va a ser la clase base Matriz.
+La práctica consiste en crear una clase abstracta llamada Matriz, donde pondremos los distintos métodos abstractos de la clase  
+Para ello partimos de la clase base Matriz cuya funcion va a ser que sea heredada por las clases hijas ,y creamos dos clases 
+hijas que van a ser: clase Matriz Densa  ya implementada de la práctica anterior con las operaciones basicas 
+correspondientes (+-*/)  y clase Matriz Dispersa cuya madre va a ser la clase base Matriz y donde se van a redifinir los metodos de 
+la clase madre.
 
 class  Matriz
 
-   metodos
-
+  metodos abstractos
+  
 end
 
 class MatrizDensa < Matriz
