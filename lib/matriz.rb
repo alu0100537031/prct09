@@ -10,6 +10,7 @@ class Matriz
     @nfil = nfil # inicializo numero de filas
     @ncol = ncol # inicializo numero de columnas 
   end
+end  
 
 
 
@@ -45,7 +46,7 @@ class MatrizDensa < Matriz
              m[i][j] = self.mat[i][j]+ other.mat[i][j]
          end
       end
-      return Matriz.new(other.nfil,other.ncol,m) 
+      return MatrizDensa.new(other.nfil,other.ncol,m) 
    end
    
     # metodo que resta dos matrices (Sobrecarga del operador -)
@@ -58,7 +59,7 @@ class MatrizDensa < Matriz
 	     m[i][j] = mat[i][j]- other.mat[i][j]
          end
       end
-      return Matriz.new(other.nfil,other.ncol,m) 
+      return MatrizDensa.new(other.nfil,other.ncol,m) 
    end
 
    # metodo que multiplica dos matrices (Sobrecarga del operador *)
@@ -73,19 +74,23 @@ class MatrizDensa < Matriz
          end
       end
     end
-    return Matriz.new(self.nfil,other.ncol,m)  
+    return MatrizDensa.new(self.nfil,other.ncol,m)  
   end
    
 end 
-end
 
-class MatrizDispersa < Matriz
+
+#class MatrizDispersa < Matriz
 #  metodos redifinidos de la clase base Matriz   
-end
+#end
+
+
 
 
    
-end   
+#end 
+m1 = MatrizDensa.new(2,2,[[1,2],[3,4]])
+puts m1.to_s
 
   
 
