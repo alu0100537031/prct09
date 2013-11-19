@@ -1,6 +1,7 @@
 # Clase Base Matriz
 
 class Matriz
+  require "./lib/racional.rb"
 
   attr_reader :nfil, :ncol # metodos de acceso (getter)
   
@@ -89,12 +90,22 @@ end
 
    
 #end 
+frac1 = Fraccion.new(1,3)
+frac2 = Fraccion.new(1,4)
 m1 = MatrizDensa.new(2,2,[[1,2],[3,4]])
 m2 = MatrizDensa.new(2,2,[[7,10],[15,22]])
+m3 = MatrizDensa.new(2,2,[[frac1,frac2],[frac1,frac2]])
+puts "     M1   "
 puts m1.to_s
+puts "     M2   "
 puts m2.to_s
+puts "     M3   "
+puts m3.to_s
+puts " Suma (M1+M2)"
 puts m2+m1
+puts " Resta(M1-M2)"
 puts m2-m1
+puts " Producto(M1*M2)"
 puts m2*m1
 
   
