@@ -31,6 +31,7 @@ class Fraccion
   # metodo que calcula la suma de dos fracciones
   
   def +(other)
+    if other.is_a? Fraccion     
       if (@denom == other.denom)   #si los denominadores son iguales
          Fraccion.new(@num + other.num, @denom)
       else  #si los denominadores son distintos
@@ -39,11 +40,23 @@ class Fraccion
 	aux2 = ((aux3/other.denom) * other.num) # calculo del denominador de la segunda fraccion        
 	Fraccion.new((aux+aux2),aux3)
       end
-   end
+    else
+      tmp = Fraccion.new(other,1)
+      if (@denom == tmp.denom)   #si los denominadores son iguales
+         Fraccion.new(@num + other.num, @denom)
+      else  #si los denominadores son distintos
+        aux3 = ((@denom/gcd(@denom,tmp.denom)) * tmp.denom) # Calculo del mcm usando la propiedad (a*b/mcd(a,b))
+	aux = ((aux3/@denom) * @num) # calculo del numerador de la primera fraccion
+	aux2 = ((aux3/tmp.denom) * tmp.num) # calculo del denominador de la segunda fraccion        
+	Fraccion.new((aux+aux2),aux3)
+      end
+    end
+  end  
    
    # metodo que calcula la resta de dos fracciones
    
     def -(other)
+    if other.is_a? Fraccion     
       if (@denom == other.denom)   #si los denominadores son iguales
          Fraccion.new(@num - other.num, @denom)
       else  # si los denominadores son distintos
@@ -52,6 +65,17 @@ class Fraccion
 	aux2 = ((aux3/other.denom) * other.num) # calculo del denominador de la segunda fraccion        
 	Fraccion.new((aux-aux2),aux3)
       end
+    else
+      tmp = Fraccion.new(other,1)
+      if (@denom == tmp.denom)   #si los denominadores son iguales
+         Fraccion.new(@num + other.num, @denom)
+      else  #si los denominadores son distintos
+        aux3 = ((@denom/gcd(@denom,tmp.denom)) * tmp.denom) # Calculo del mcm usando la propiedad (a*b/mcd(a,b))
+	aux = ((aux3/@denom) * @num) # calculo del numerador de la primera fraccion
+	aux2 = ((aux3/tmp.denom) * tmp.num) # calculo del denominador de la segunda fraccion        
+	Fraccion.new((aux-aux2),aux3)
+      end
+    end  
    end
    
    # metodo que calcula el producto de dos fracciones
@@ -73,9 +97,9 @@ class Fraccion
      # self.to_f <=> other.to_f
      @num.to_f/@denom <=> other.num.to_f/other.denom
   end
-  
+
   def coerce(other)
-       [self,other]
+       [Fraccion.new(other,1),self]
     end
   
 end
