@@ -74,6 +74,10 @@ class Fraccion
      @num.to_f/@denom <=> other.num.to_f/other.denom
   end
   
+  def coerce(other)
+       [self,other]
+    end
+  
 end
    
 
