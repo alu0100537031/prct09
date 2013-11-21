@@ -10,7 +10,8 @@ class Matriz
     @nfil = nfil # inicializo numero de filas
     @ncol = ncol # inicializo numero de columnas 
   end
-end  
+end
+
 =begin   
   def to_s
   end
@@ -150,8 +151,8 @@ class MatrizDispersa < Matriz
   end 
 
   def +(other)
-      raise TypeError, "La matriz other no es dispersa" unless other.instance_of? MatrizDispersa
-      raise ArgumentError, "La longitud de las matrices no coincide." unless @nfil == other.nfil && @ncol == other.ncol
+      raise TypeError, "La matriz no es dispersa" unless other.instance_of? MatrizDispersa
+      raise ArgumentError, "Las matrices no son cuadradas." unless @nfil == other.nfil && @ncol == other.ncol
       suma = MatrizDispersa.new(nfil,ncol,0)
       #suma = Hash.new(0)
       suma = hash.merge(other.hash){|key,oldval,newval| oldval+newval}
@@ -161,8 +162,8 @@ class MatrizDispersa < Matriz
   end
   
    def -(other)
-      raise TypeError, "La matriz other no es dispersa" unless other.instance_of? MatrizDispersa
-      raise ArgumentError, "La longitud de las matrices no coincide." unless @nfil == other.nfil && @ncol == other.ncol
+      raise TypeError, "La matriz no es dispersa" unless other.instance_of? MatrizDispersa
+      raise ArgumentError, "Las matrices no son cuadradas." unless @nfil == other.nfil && @ncol == other.ncol
       resta = MatrizDispersa.new(nfil,ncol,0)
       #resta = Hash.new(0)
       resta = hash.merge(other.hash){|key,oldval,newval| oldval-newval}
