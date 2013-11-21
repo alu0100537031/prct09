@@ -61,6 +61,7 @@ require "./lib/matriz.rb"
 		   it "matriz dispersa" do
                         @m4dispersa.to_s.should eq ({"[0][2]"=>10, "[1][0]"=>5, "[2][2]"=>40})
 		   end
+		   
 		end  
 		
 		describe "se debe " do
@@ -81,8 +82,21 @@ require "./lib/matriz.rb"
 
 		end  
 		
-		
+		describe "se debe " do
+		  
+		   it " sumar dos matrices dispersas con enteros" do
+		        sum = @m4dispersa+@m5dispersa
+                        sum.to_s.should eq("{\"[0][2]\"=>14, \"[1][0]\"=>8, \"[2][2]\"=>42}")
+
+                  end
+                  it " restar dos matrices dispersas" do
+		        res = @m4dispersa-@m5dispersa
+                        res.to_s.should eq("{\"[0][2]\"=>6, \"[1][0]\"=>2, \"[2][2]\"=>38}")
+                  end
+		  
+		end  
+				
        end
-	
+
 
              
