@@ -267,9 +267,7 @@ puts " El valor maximo de la matriz M2(densa) es  #{m2.max}"
 puts " El valor minimo de la matriz M2(densa) es  #{m2.min}"
 puts " El valor maximo de la matriz M4(dispersa) es  #{m4.max}"
 puts " El valor minimo de la matriz M4(dispersa) es  #{m4.min}"
-#puts m4+m1  Matriz Dispersa + Matriz Densa = Matriz Densa
-#puts m1+m4  Matriz Densa + Matriz Dispersa = Matriz Densa
-#puts m4+1 -> Aqui falla ya que el segundo objeto no es ni de tipo Matriz Dispersa ni Densa
+
 
 
 
