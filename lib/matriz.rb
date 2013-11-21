@@ -105,8 +105,33 @@ class MatrizDensa < Matriz
     end
     return MatrizDensa.new(self.nfil,other.ncol,m)  
   end
+  
+  def max
+    max=0	
+      for i in 0...nfil do   
+         for j in 0...ncol do
+            if mat[i][j] > max
+               max=mat[i][j]
+            end
+          end
+      end			  	
+    return max  
+  end
+  
+  def min
+      min=9999;
+      for i in 0...nfil do   
+         for j in 0...ncol do
+            if mat[i][j] < min
+               min=mat[i][j]
+            end
+          end
+      end			  	 
+      return min  
+  end
+end	  
    
-end 
+      
 
 
 class MatrizDispersa < Matriz
@@ -147,7 +172,7 @@ class MatrizDispersa < Matriz
     else
       print "0"
     end
-   puts   
+   return hash   
   end 
 
   def +(other)
@@ -188,37 +213,31 @@ class MatrizDispersa < Matriz
   
   def max
     max = 0
-    puts hash	
     hash.each do |clave,valor|
 	  if (valor > max)
 	    max=valor 
           end
     end
-  # puts "El valor maximo de la matriz es #{max}"
    return max 
    end
   
   def min
-    min = 9999
-    puts hash
+    min = 9999	
     hash.each do |clave,valor|
 	  if (valor < min)
 	    min=valor 
           end
     end
-   #puts "El valor minimo de la matriz es #{min}"
    return min
   end
 end
 
 frac1 = Fraccion.new(1,3)
 frac2 = Fraccion.new(1,4)
-#puts 1-frac1 
-#puts frac1-1
 m1 = MatrizDensa.new(3,3,[[1,2,0],[3,4,0],[0,2,3]])
 m2 = MatrizDensa.new(3,3,[[7,10,5],[15,22,3],[2,3,4]])
 m3 = MatrizDensa.new(3,3,[[frac1,frac2,frac1],[frac1,frac2,frac1],[frac2,frac2,frac1]])
-m4 = MatrizDispersa.new(3,3,[[0,0,60],[5,0,0],[0,0,40]])
+m4 = MatrizDispersa.new(3,3,[[0,0,10],[5,0,0],[0,0,40]])
 m5 = MatrizDispersa.new(3,3,[[0,0,4],[3,0,0],[0,0,2]])
 puts " Matrices Densas "
 puts "     M1   "
@@ -240,14 +259,16 @@ puts "     M5   "
 m5.to_s
 puts
 puts " (M4+M5)"
-puts m4+m5 # Matriz Dispersa - Matriz Dispersa
+puts m4+m5 # Matriz Dispersa - Matriz Dispersa = Matriz Dispersa
 puts
 puts " (M4-M5)"
-puts m4-m5 # Matriz Dispersa + Matriz Dispersa
-puts m4.max
-puts m4.min
-#puts m4+m1  Matriz Dispersa + Matriz Densa
-#puts m1+m4  Matriz Densa + Matriz Dispersa
+puts m4-m5 # Matriz Dispersa + Matriz Dispersa = Matriz Dispersa
+puts " El valor maximo de la matriz M2(densa) es  #{m2.max}"
+puts " El valor minimo de la matriz M2(densa) es  #{m2.min}"
+puts " El valor maximo de la matriz M4(dispersa) es  #{m4.max}"
+puts " El valor minimo de la matriz M4(dispersa) es  #{m4.min}"
+#puts m4+m1  Matriz Dispersa + Matriz Densa = Matriz Densa
+#puts m1+m4  Matriz Densa + Matriz Dispersa = Matriz Densa
 #puts m4+1 -> Aqui falla ya que el segundo objeto no es ni de tipo Matriz Dispersa ni Densa
 
 
