@@ -1,5 +1,4 @@
 # Clase Base Matriz
-
 class Matriz
   require "./lib/racional.rb"
 
@@ -12,8 +11,21 @@ class Matriz
     @ncol = ncol # inicializo numero de columnas 
   end
 end  
+=begin   
+  def to_s
+  end
+ 
+  def +(other)
+  end
+  
+  def -(other)
+  end
+  
+  def *(other)
+  end
+end  
 
-
+=end
 
 
 class MatrizDensa < Matriz
@@ -97,7 +109,9 @@ end
 
 
 class MatrizDispersa < Matriz
+  
   attr_reader:hash , :mat
+  
   def initialize (nfil, ncol, mat)
     super(nfil, ncol)
     @mat = Array.new(mat)
@@ -114,7 +128,7 @@ class MatrizDispersa < Matriz
 	       print "Valores"
                puts psincero="[#{i}][#{j}]"
                @hash[psincero]=mat[i][j]
-	       puts hash.length
+	       #puts hash.length
 	       puts hash
             end
        end
@@ -125,38 +139,71 @@ class MatrizDispersa < Matriz
 	 raise ArgumentError, 'La Matriz no es dispersa'
       end
  end
-end 
+ 
+  def to_s
+    if (hash.values != nil)
+      print hash
+    else
+      print "0"
+    end
+   puts   
+  end 
 
-
-
-
-
-   
-#end 
+  def +(other)
+      raise TypeError, "La matriz other no es dispersa" unless other.instance_of? MatrizDispersa
+      raise ArgumentError, "La longitud de las matrices no coincide." unless @nfil == other.nfil && @ncol == other.ncol
+      suma = MatrizDispersa.new(nfil,ncol,0)
+      #suma = Hash.new(0)
+      suma = hash.merge(other.hash){|key,oldval,newval| oldval+newval}
+      #puts suma.keys
+      return suma # devuelve un objeto de tipo Matriz Dispersa
+      
+  end
+  
+   def -(other)
+      raise TypeError, "La matriz other no es dispersa" unless other.instance_of? MatrizDispersa
+      raise ArgumentError, "La longitud de las matrices no coincide." unless @nfil == other.nfil && @ncol == other.ncol
+      resta = MatrizDispersa.new(nfil,ncol,0)
+      #resta = Hash.new(0)
+      resta = hash.merge(other.hash){|key,oldval,newval| oldval-newval}
+      #puts resta.keys
+      return resta # devuelve un objeto de tipo Matriz Dispersa
+      
+  end 
+end
 
 frac1 = Fraccion.new(1,3)
-#puts frac1+1
 puts 1-frac1 
 puts frac1-1
 frac2 = Fraccion.new(1,4)
 m1 = MatrizDensa.new(2,2,[[1,2],[3,4]])
-puts m1[0].size
-puts m1[1].size
 m2 = MatrizDensa.new(2,2,[[7,10],[15,22]])
 m3 = MatrizDensa.new(2,2,[[frac1,frac2],[frac1,frac2]])
 m4 = MatrizDispersa.new(2, 2, [[0,0,1],[1,2,3],[0,0,1]])
+m5 = MatrizDispersa.new(2, 2, [[0,0,4],[3,2,1],[0,0,2]])
+puts " Matriz Densa "
 puts "     M1   "
 puts m1.to_s
 puts "     M2   "
 puts m2.to_s
 puts "     M3   "
 puts m3.to_s
-puts " Suma (M1+M2)"
-puts m2+m1
-puts " Resta(M1-M2)"
-puts m2-m1
-puts " Producto(M1*M2)"
-puts m2*m1
+puts " Suma (M1+M3)"
+puts m1+m3
+puts " Resta(M1-M3)"
+puts m1-m3
+puts " Producto(M1*M3)"
+puts m1*m3
+puts " Matriz Dispersa "
+puts "     M4   "
+m4.to_s
+puts " Matriz Dispersa "
+puts "     M5   "
+m5.to_s
+puts " Suma (M4+M5)"
+puts m4+m5
+puts " Resta (M4-M5)"
+puts m4-m5
 
   
 
