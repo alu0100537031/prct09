@@ -80,6 +80,16 @@ require "./lib/matriz.rb"
                         mul.to_s.should eq("  [ 37 54 11 ]\n  [ 81 118 27 ]\n  [ 36 53 18 ]\n ")
                   end
 		  
+		   it "calcular el maximo de una matriz Densa " do
+			max = @m2densa.max
+			max.should eq 22
+		  end
+   
+		  it "calcular el minimo de una matriz Densa" do
+			min = @m2densa.min
+			min.should eq 2
+		  end
+		  
 		 
 	      end
 		  
