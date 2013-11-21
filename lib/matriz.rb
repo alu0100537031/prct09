@@ -120,21 +120,21 @@ class MatrizDispersa < Matriz
     nelementos= (nfil * ncol)*0.6 # elementos de la matriz aplicado el 60 % 
     psincero = 0 # posiciones de los elementos de la matriz cuyo valor no es nulo (0)
     @hash = Hash.new(0)
-    for i in 0..nfil do
-       for j in 0..ncol do
+    for i in 0...nfil do
+       for j in 0...ncol do
            if (mat[i][j]==0)  
                nceros=nceros+1
             else
                # hash
-	       print "Valores"
-               puts psincero="[#{i}][#{j}]"
+	       #print "Valores"
+               psincero="[#{i}][#{j}]"
                @hash[psincero]=mat[i][j]
 	       #puts hash.length
-	       puts hash
+	       #puts hash
             end
        end
     end
-      if nceros >= nelementos
+      if nceros >= nelementos # compruebo que la matriz sea dispersa 
 	 puts "La matriz es dispersa" 
       else
 	 raise ArgumentError, 'La Matriz no es dispersa'
@@ -174,14 +174,14 @@ class MatrizDispersa < Matriz
 end
 
 frac1 = Fraccion.new(1,3)
-puts 1-frac1 
-puts frac1-1
 frac2 = Fraccion.new(1,4)
-m1 = MatrizDensa.new(2,2,[[1,2],[3,4]])
-m2 = MatrizDensa.new(2,2,[[7,10],[15,22]])
-m3 = MatrizDensa.new(2,2,[[frac1,frac2],[frac1,frac2]])
-m4 = MatrizDispersa.new(2, 2, [[0,0,1],[1,2,3],[0,0,1]])
-m5 = MatrizDispersa.new(2, 2, [[0,0,4],[3,2,1],[0,0,2]])
+#puts 1-frac1 
+#puts frac1-1
+m1 = MatrizDensa.new(3,3,[[1,2,0],[3,4,0],[0,2,3]])
+m2 = MatrizDensa.new(3,3,[[7,10,5],[15,22,3],[2,3,4]])
+m3 = MatrizDensa.new(3,3,[[frac1,frac2,frac1],[frac1,frac2,frac1],[frac2,frac2,frac1]])
+m4 = MatrizDispersa.new(3,3,[[0,0,1],[1,0,0],[0,0,1]])
+m5 = MatrizDispersa.new(3,3,[[0,0,4],[3,0,0],[0,0,2]])
 puts " Matriz Densa "
 puts "     M1   "
 puts m1.to_s
@@ -198,13 +198,14 @@ puts m1*m3
 puts " Matriz Dispersa "
 puts "     M4   "
 m4.to_s
-puts " Matriz Dispersa "
 puts "     M5   "
 m5.to_s
 puts " Suma (M4+M5)"
 puts m4+m5
 puts " Resta (M4-M5)"
 puts m4-m5
+
+
 
   
 
