@@ -224,6 +224,7 @@ m2 = MatrizDensa.new(3,3,[[7,10,5],[15,22,3],[2,3,4]])
 m3 = MatrizDensa.new(3,3,[[frac1,frac2,frac1],[frac1,frac2,frac1],[frac2,frac2,frac1]])
 m4 = MatrizDispersa.new(3,3,[[0,0,10],[5,0,0],[0,0,40]])
 m5 = MatrizDispersa.new(3,3,[[0,0,4],[3,0,0],[0,0,2]])
+=begin
 puts " Matrices Densas "
 puts "     M1   "
 puts m1.to_s
@@ -252,6 +253,7 @@ puts " El valor maximo de la matriz M2(densa) es  #{m2.max}"
 puts " El valor minimo de la matriz M2(densa) es  #{m2.min}"
 puts " El valor maximo de la matriz M4(dispersa) es  #{m4.max}"
 puts " El valor minimo de la matriz M4(dispersa) es  #{m4.min}"
+=end
 
 
 
