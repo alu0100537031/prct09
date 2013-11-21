@@ -135,7 +135,7 @@ class MatrizDispersa < Matriz
        end
     end
       if nceros >= nelementos # compruebo que la matriz sea dispersa 
-	 puts "La matriz es dispersa" 
+	 #puts "La matriz es dispersa" 
       else
 	 raise ArgumentError, 'La Matriz no es dispersa'
       end
@@ -151,24 +151,38 @@ class MatrizDispersa < Matriz
   end 
 
   def +(other)
-      raise TypeError, "La matriz no es dispersa" unless other.instance_of? MatrizDispersa
-      raise ArgumentError, "Las matrices no son cuadradas." unless @nfil == other.nfil && @ncol == other.ncol
-      suma = MatrizDispersa.new(nfil,ncol,0)
-      #suma = Hash.new(0)
-      suma = hash.merge(other.hash){|key,oldval,newval| oldval+newval}
-      #puts suma.keys
-      return suma # devuelve un objeto de tipo Matriz Dispersa
+      
+      case other
+          when MatrizDensa
+              other.+(self)
+          when MatrizDispersa
+	      raise ArgumentError, "Las matrices no son cuadradas." unless @nfil == other.nfil && @ncol == other.ncol
+	      suma = MatrizDispersa.new(nfil,ncol,0)
+	      #suma = Hash.new(0)
+	      suma = hash.merge(other.hash){|key,oldval,newval| oldval+newval}
+	      #puts suma.keys
+	      return suma # devuelve un objeto de tipo Matriz Dispersa
+	   else
+	      raise TypeError, "La matriz no es dispersa ni densa" unless other.instance_of? MatrizDispersa
+       end
+      
       
   end
   
    def -(other)
-      raise TypeError, "La matriz no es dispersa" unless other.instance_of? MatrizDispersa
-      raise ArgumentError, "Las matrices no son cuadradas." unless @nfil == other.nfil && @ncol == other.ncol
-      resta = MatrizDispersa.new(nfil,ncol,0)
-      #resta = Hash.new(0)
-      resta = hash.merge(other.hash){|key,oldval,newval| oldval-newval}
-      #puts resta.keys
-      return resta # devuelve un objeto de tipo Matriz Dispersa
+       case other
+          when MatrizDensa
+              other.-(self)
+          when MatrizDispersa
+	      raise ArgumentError, "Las matrices no son cuadradas." unless @nfil == other.nfil && @ncol == other.ncol
+	      resta = MatrizDispersa.new(nfil,ncol,0)
+	      #resta = Hash.new(0)
+	      resta = hash.merge(other.hash){|key,oldval,newval| oldval-newval}
+	      #puts resta.keys
+	      return resta # devuelve un objeto de tipo Matriz Dispersa
+	   else
+	       raise TypeError, "La matriz no es dispersa ni densa " unless other.instance_of? MatrizDispersa
+       end
       
   end 
 end
@@ -182,28 +196,34 @@ m2 = MatrizDensa.new(3,3,[[7,10,5],[15,22,3],[2,3,4]])
 m3 = MatrizDensa.new(3,3,[[frac1,frac2,frac1],[frac1,frac2,frac1],[frac2,frac2,frac1]])
 m4 = MatrizDispersa.new(3,3,[[0,0,1],[1,0,0],[0,0,1]])
 m5 = MatrizDispersa.new(3,3,[[0,0,4],[3,0,0],[0,0,2]])
-puts " Matriz Densa "
+puts " Matrices Densas "
 puts "     M1   "
 puts m1.to_s
 puts "     M2   "
 puts m2.to_s
 puts "     M3   "
 puts m3.to_s
-puts " Suma (M1+M3)"
+puts " (M1+M3)"
 puts m1+m3
-puts " Resta(M1-M3)"
+puts " (M1-M3)"
 puts m1-m3
-puts " Producto(M1*M3)"
+puts " (M1*M3)"
 puts m1*m3
-puts " Matriz Dispersa "
+puts " Matrices Dispersas "
 puts "     M4   "
 m4.to_s
 puts "     M5   "
 m5.to_s
-puts " Suma (M4+M5)"
-puts m4+m5
-puts " Resta (M4-M5)"
-puts m4-m5
+puts
+puts " (M4+M5)"
+puts m4+m5 # Matriz Dispersa - Matriz Dispersa
+puts
+puts " (M4-M5)"
+puts m4-m5 # Matriz Dispersa + Matriz Dispersa
+puts
+#puts m4+m1  Matriz Dispersa + Matriz Densa
+#puts m1+m4  Matriz Densa + Matriz Dispersa
+#puts m4+1 -> Aqui falla ya que el segundo objeto no es ni de tipo Matriz Dispersa ni Densa
 
 
 
