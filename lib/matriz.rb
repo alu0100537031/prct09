@@ -189,30 +189,16 @@ class MatrizDispersa < Matriz
   def max
     max = 0
     puts hash.length
-    puts hash
-    #puts hash.values
-=begin
-    for i in 0...hash.length do
-      for j in 0...hash.length do
-	puts "[#{i}][#{j}]"
-        puts hash["[#{i}][#{j}]"]
-      end
-    end
-  end
-end 
-=end
-   #hash.each {|key, value| puts "#{key} is #{value}" }
-   hash.each do |clave,valor|
-          #puts "#{valor	}"
-#           max = valor
+    puts hash}
+    hash.each do |clave,valor|
+
 	  if (valor > max)
 	    max=valor 
           end
-   end
+    end
    puts "El valor maximo de la matriz es #{max}"
- return max 
-	 #puts hash["#{i	}#{j}"]
-end
+   return max 
+  end
 end
 
 frac1 = Fraccion.new(1,3)
