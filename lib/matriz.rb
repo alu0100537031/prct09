@@ -184,7 +184,35 @@ class MatrizDispersa < Matriz
 	       raise TypeError, "La matriz no es dispersa ni densa " unless other.instance_of? MatrizDispersa
        end
       
-  end 
+  end
+  
+  def max
+    max = 0
+    puts hash.length
+    puts hash
+    #puts hash.values
+=begin
+    for i in 0...hash.length do
+      for j in 0...hash.length do
+	puts "[#{i}][#{j}]"
+        puts hash["[#{i}][#{j}]"]
+      end
+    end
+  end
+end 
+=end
+   #hash.each {|key, value| puts "#{key} is #{value}" }
+   hash.each do |clave,valor|
+          #puts "#{valor	}"
+#           max = valor
+	  if (valor > max)
+	    max=valor 
+          end
+   end
+   puts "El valor maximo de la matriz es #{max}"
+ return max 
+	 #puts hash["#{i	}#{j}"]
+end
 end
 
 frac1 = Fraccion.new(1,3)
@@ -194,7 +222,7 @@ frac2 = Fraccion.new(1,4)
 m1 = MatrizDensa.new(3,3,[[1,2,0],[3,4,0],[0,2,3]])
 m2 = MatrizDensa.new(3,3,[[7,10,5],[15,22,3],[2,3,4]])
 m3 = MatrizDensa.new(3,3,[[frac1,frac2,frac1],[frac1,frac2,frac1],[frac2,frac2,frac1]])
-m4 = MatrizDispersa.new(3,3,[[0,0,1],[1,0,0],[0,0,1]])
+m4 = MatrizDispersa.new(3,3,[[0,0,60],[5,0,0],[0,0,40]])
 m5 = MatrizDispersa.new(3,3,[[0,0,4],[3,0,0],[0,0,2]])
 puts " Matrices Densas "
 puts "     M1   "
@@ -220,7 +248,7 @@ puts m4+m5 # Matriz Dispersa - Matriz Dispersa
 puts
 puts " (M4-M5)"
 puts m4-m5 # Matriz Dispersa + Matriz Dispersa
-puts
+puts m4.max
 #puts m4+m1  Matriz Dispersa + Matriz Densa
 #puts m1+m4  Matriz Densa + Matriz Dispersa
 #puts m4+1 -> Aqui falla ya que el segundo objeto no es ni de tipo Matriz Dispersa ni Densa
