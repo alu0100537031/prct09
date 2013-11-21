@@ -108,6 +108,16 @@ require "./lib/matriz.rb"
                         res.to_s.should eq("{\"[0][2]\"=>6, \"[1][0]\"=>2, \"[2][2]\"=>38}")
                   end
 		  
+		   it "calcular el maximo de una matriz Dispersa " do
+		      max = @m4dispersa.max
+		      max.should eq 40
+		  end
+   
+		  it "calcular el minimo de una matriz Dispersa" do
+		      min = @m4dispersa.min
+		      min.should eq 5
+		  end
+		  
 		
 		  
 		end  
