@@ -188,16 +188,26 @@ class MatrizDispersa < Matriz
   
   def max
     max = 0
-    puts hash.length
-    puts hash}
+    puts hash	
     hash.each do |clave,valor|
-
 	  if (valor > max)
 	    max=valor 
           end
     end
-   puts "El valor maximo de la matriz es #{max}"
+  # puts "El valor maximo de la matriz es #{max}"
    return max 
+   end
+  
+  def min
+    min = 9999
+    puts hash
+    hash.each do |clave,valor|
+	  if (valor < min)
+	    min=valor 
+          end
+    end
+   #puts "El valor minimo de la matriz es #{min}"
+   return min
   end
 end
 
@@ -235,6 +245,7 @@ puts
 puts " (M4-M5)"
 puts m4-m5 # Matriz Dispersa + Matriz Dispersa
 puts m4.max
+puts m4.min
 #puts m4+m1  Matriz Dispersa + Matriz Densa
 #puts m1+m4  Matriz Densa + Matriz Dispersa
 #puts m4+1 -> Aqui falla ya que el segundo objeto no es ni de tipo Matriz Dispersa ni Densa
