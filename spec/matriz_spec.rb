@@ -79,12 +79,16 @@ require "./lib/matriz.rb"
 		         mul = @m1densa*@m2densa
                         mul.to_s.should eq("  [ 37 54 11 ]\n  [ 81 118 27 ]\n  [ 36 53 18 ]\n ")
                   end
+		  
+		 
+	      end
+		  
 
-		end  
+		 
 		
 		describe "se debe " do
 		  
-		   it " sumar dos matrices dispersas con enteros" do
+		   it " sumar dos matrices dispersas " do
 		        sum = @m4dispersa+@m5dispersa
                         sum.to_s.should eq("{\"[0][2]\"=>14, \"[1][0]\"=>8, \"[2][2]\"=>42}")
 
@@ -94,7 +98,24 @@ require "./lib/matriz.rb"
                         res.to_s.should eq("{\"[0][2]\"=>6, \"[1][0]\"=>2, \"[2][2]\"=>38}")
                   end
 		  
+		
+		  
 		end  
+		
+		describe "se debe  " do
+		  
+		   it " sumar una matriz densa con una dispersa " do
+		        sum = @m1densa+@m5dispersa
+                        sum.to_s.should eq("  [ 1 2 4 ]\n  [ 6 4 0 ]\n  [ 0 2 5 ]\n ")
+
+
+                  end
+                  it " restar una matriz dispersa con una densa" do
+		        res = @m5dispersa-@m1densa
+                        res.to_s.should eq("  [ 1 2 -4 ]\n  [ 0 4 0 ]\n  [ 0 2 1 ]\n ")
+                  end
+		  
+		end 
 				
        end
 
