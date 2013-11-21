@@ -63,6 +63,24 @@ require "./lib/matriz.rb"
 		   end
 		end  
 		
+		describe "se debe " do
+		  
+		   it " sumar dos matrices densas con enteros" do
+		        sum = @m1densa+@m2densa
+                        sum.to_s.should eq("  [ 8 12 5 ]\n  [ 18 26 3 ]\n  [ 2 5 7 ]\n ")
+                  end
+                  it " restar una matriz densa con otra matriz densa con racionales" do
+		        res = @m1densa-@m3densa
+                        res.to_s.should eq("  [ 2/3 7/4 -1/3 ]\n  [ 8/3 15/4 -1/3 ]\n  [ -1/4 7/4 8/3 ]\n ")
+                  end
+		  
+		  it " multiplicar una matriz densa con otra matriz densa" do
+		         mul = @m1densa*@m2densa
+                        mul.to_s.should eq("  [ 37 54 11 ]\n  [ 81 118 27 ]\n  [ 36 53 18 ]\n ")
+                  end
+
+		end  
+		
 		
        end
 	
