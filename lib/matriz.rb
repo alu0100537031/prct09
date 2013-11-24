@@ -18,7 +18,7 @@ class MatrizDensa < Matriz
   
   attr_reader :mat # metodos de acceso (getter)
   
-  def initialize(nfil,ncol,mat) 
+  def initialize(nfil,ncol,mat)
      super(nfil, ncol)
      @mat = Array.new(mat) #inicializo la matriz pasando como parametro un objeto de tipo matriz 
   end
@@ -125,7 +125,7 @@ class MatrizDispersa < Matriz
   
   def initialize (nfil, ncol, mat)
     super(nfil, ncol)
-    @mat = Array.new(mat)
+    @mat = Array.new(mat)	
     nceros = 0 # numero de elementos nulos de la matriz (0)
     nelementos= (nfil * ncol)*0.6 # elementos de la matriz aplicado el 60 % 
     psincero = 0 # posiciones de los elementos de la matriz cuyo valor no es nulo (0)
@@ -135,12 +135,19 @@ class MatrizDispersa < Matriz
            if (mat[i][j]==0)  
                nceros=nceros+1
             else
-               # hash
-	       #print "Valores"
                psincero="[#{i}][#{j}]"
-               @hash[psincero]=mat[i][j]
-	       #puts hash.length
-	       #puts hash
+	       if (mat[i][j].is_a?Fraccion)
+		 a = mat[i][j].num
+		 b = mat[i][j].denom
+	        @hash[psincero] = Rational(a,b)
+		#cad = " " 
+		#cad << "#{a}"
+		#cad << "/"
+		#cad << "#{b}" 
+		#@hash[psincero] = cad		
+	       else 
+		@hash[psincero] = mat[i][j]
+	       end
             end
        end
     end
@@ -153,11 +160,13 @@ class MatrizDispersa < Matriz
  
   def to_s
     if (hash.values != nil)
-      print hash
+      cad = ""
+      cad << "#{hash}"
+      return cad 
     else
-      print "0"
-    end
-   return hash   
+      return 0
+    end 
+    #return hash
   end 
 
   def +(other)
@@ -166,11 +175,9 @@ class MatrizDispersa < Matriz
           when MatrizDensa
               other.+(self)
           when MatrizDispersa
-	      raise ArgumentError, "Las matrices no son cuadradas." unless @nfil == other.nfil && @ncol == other.ncol
+	      raise ArgumentError, "Las matrices no son cuadradas." unless @nfil == other.nfil && @ncol == other.ncol 
 	      suma = MatrizDispersa.new(nfil,ncol,0)
-	      #suma = Hash.new(0)
-	      suma = hash.merge(other.hash){|key,oldval,newval| oldval+newval}
-	      #puts suma.keys
+	      suma = hash.merge(other.hash){|key,oldval,newval| oldval+newval }
 	      return suma # devuelve un objeto de tipo Matriz Dispersa
 	   else
 	      raise TypeError, "La matriz no es dispersa ni densa" unless other.instance_of? MatrizDispersa
@@ -186,9 +193,7 @@ class MatrizDispersa < Matriz
           when MatrizDispersa
 	      raise ArgumentError, "Las matrices no son cuadradas." unless @nfil == other.nfil && @ncol == other.ncol
 	      resta = MatrizDispersa.new(nfil,ncol,0)
-	      #resta = Hash.new(0)
 	      resta = hash.merge(other.hash){|key,oldval,newval| oldval-newval}
-	      #puts resta.keys
 	      return resta # devuelve un objeto de tipo Matriz Dispersa
 	   else
 	       raise TypeError, "La matriz no es dispersa ni densa " unless other.instance_of? MatrizDispersa
@@ -217,13 +222,23 @@ class MatrizDispersa < Matriz
   end
 end
 
-frac1 = Fraccion.new(1,3)
-frac2 = Fraccion.new(1,4)
+frac1 = Fraccion.new(5,3)
+frac2 = Fraccion.new(4,9)
 m1 = MatrizDensa.new(3,3,[[1,2,0],[3,4,0],[0,2,3]])
 m2 = MatrizDensa.new(3,3,[[7,10,5],[15,22,3],[2,3,4]])
 m3 = MatrizDensa.new(3,3,[[frac1,frac2,frac1],[frac1,frac2,frac1],[frac2,frac2,frac1]])
 m4 = MatrizDispersa.new(3,3,[[0,0,10],[5,0,0],[0,0,40]])
 m5 = MatrizDispersa.new(3,3,[[0,0,4],[3,0,0],[0,0,2]])
+m6 = MatrizDispersa.new(3,3,[[0,0,frac1],[frac2,0,0],[0,0,frac1]])
+#puts 4-frac2 # Tiene que estar implementado el coerce para que funcione
+#puts frac2-4
+#puts 1+frac2
+#puts m1.to_s
+#puts m3.to_s
+#puts m4.to_s
+#puts m5.to_s
+#puts m6.to_s
+#print 
 =begin
 puts " Matrices Densas "
 puts "     M1   "
