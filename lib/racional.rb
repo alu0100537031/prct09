@@ -97,13 +97,18 @@ class Fraccion
      # self.to_f <=> other.to_f
      @num.to_f/@denom <=> other.num.to_f/other.denom
   end
-
+ 
   def coerce(other)
        [Fraccion.new(other,1),self]
-    end
+  end
   
 end
-   
+
+=begin  
+   def coerce(other)
+       return [self,other]
+  end
+=end
 
 
    
