@@ -92,7 +92,7 @@ class MatrizDensa < Matriz
   end
   
   def max
-    max=0	
+    max=mat[0][0] # Maximo toma como valor inicial el primer elemento de la matriz	
       for i in 0...nfil do   
          for j in 0...ncol do
             if mat[i][j] > max
@@ -102,6 +102,8 @@ class MatrizDensa < Matriz
       end			  	
     return max  
   end
+  
+      
   
   def min
       min=9999;
@@ -115,7 +117,8 @@ class MatrizDensa < Matriz
       return min  
   end
 end	  
-   
+
+
       
 
 
