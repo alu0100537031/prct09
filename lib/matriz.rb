@@ -215,7 +215,7 @@ class MatrizDispersa < Matriz
    end
   
   def min
-    min = 9999	
+    min = hash.values[0] # min toma el primer valor del hash	
     hash.each do |clave,valor|
 	  if (valor < min)
 	    min=valor 
