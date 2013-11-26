@@ -205,10 +205,10 @@ class MatrizDispersa < Matriz
   end
   
   def max
-    max = 0
+    max = hash.values[0] # max toma el primer valor del hash
     hash.each do |clave,valor|
 	  if (valor > max)
-	    max=valor 
+	     max=valor
           end
     end
    return max 
@@ -272,6 +272,7 @@ puts " El valor minimo de la matriz M2(densa) es  #{m2.min}"
 puts " El valor maximo de la matriz M4(dispersa) es  #{m4.max}"
 puts " El valor minimo de la matriz M4(dispersa) es  #{m4.min}"
 =end
+#puts " El valor maximo de la matriz M4(dispersa) es  #{m4.max}"
 
 
 
