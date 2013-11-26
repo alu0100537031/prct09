@@ -106,7 +106,7 @@ class MatrizDensa < Matriz
       
   
   def min
-      min=9999;
+      min=mat[0][0] # Minimo toma como valor inicial el primer elemento de la matriz
       for i in 0...nfil do   
          for j in 0...ncol do
             if mat[i][j] < min
