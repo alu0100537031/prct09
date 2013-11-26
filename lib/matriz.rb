@@ -80,6 +80,8 @@ class MatrizDensa < Matriz
    
    
   def *(other)
+  # Han de coincidir el numero de columnas de una con el numero de filas de la otra
+    raise ArgumentError , 'Las matrices no se pueden multiplicar debido a sus dimensiones (A.col == B.fil)' unless @ncol == other.nfil
     m = Array.new(@nfil){Array.new(@ncol){0}}
     for i in 0...nfil do
       for j in 0...other.ncol do  
